@@ -25,7 +25,7 @@ weibo_crawler
         
         python ./Crawler "keyword" weibo
 
-注意!!!!
+注意
 ----------------------
 
 该工具是在Linux下开发，所有文件以及程序都采用UTF-8编码，如果要在其他环境下运行，请注意修改相应的编码，强烈建议在Linux环境下运行
