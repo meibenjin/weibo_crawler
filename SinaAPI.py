@@ -199,14 +199,13 @@ class SinaSearchCrawler():
         factor: 睡眠因子，因子越大，睡眠的时间越久
     """
     def randomSleep(self, factor):
-        #sleeptime =  random.randint(60, 120)
-        sleeptime =  random.randint(1, 3)
+        sleeptime =  random.randint(5, 10)
         time.sleep(sleeptime * factor)
         
     
     def randomSnap(self):
-        #sleeptime = random.randint(3, 5)
-        time.sleep(1)
+        sleeptime = random.randint(3, 5)
+        time.sleep(sleeptime)
         #pass
     
     """
@@ -604,7 +603,6 @@ class WeiboSearchCrawler(SinaSearchCrawler):
         retry = 3
         # 获取第一页搜索结果并计算搜索结果页数
         req_url = "%s/%s&xsort=time" % (self.base_url, keyword)
-        print req_url
         while(retry > 0):
             #获取第一页搜索结果
             html =  self.get_html(req_url)
