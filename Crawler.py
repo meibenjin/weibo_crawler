@@ -12,6 +12,7 @@ def main():
     
     if(len(sys.argv) < 2):
         print "python ./Crawler keyword user/weibo"
+        
     keyword = sys.argv[1]
     search_type = sys.argv[2]
     
