@@ -15,15 +15,24 @@ weibo_crawler
     
     有关BeautifulSoup的更多信息，请访问[http://www.crummy.com/software/BeautifulSoup](http://www.crummy.com/software/BeautifulSoup/)
 
+3. mysql-python
+    
+    访问mysql数据库的python模块，Ubuntu下安装方法见：[http://www.cnblogs.com/meibenjin/archive/2012/12/04/2801699.html](http://www.cnblogs.com/meibenjin/archive/2012/12/04/2801699.html)
+
 
 使用
 -----------------------
-1. 查询微博人物
-        
-        python ./Crawler "keyword" user
-2. 查询微博内容
-        
-        python ./Crawler "keyword" weibo
+将要查询的关键词添加到keywords文件中，并启动程序
+
+        python ./Crawler.py
+工具提供两种保存方法，保存文件或写入数据库，通过修改weibo.ini实现
+
+    1. 数据库：将weibo.ini中的enable字段设置为True,并设置数据库连接信息。表结构分别在WeiboContent.py和UserInfo.py的开头
+    2. 文件：设置enable字段为False，则默认写入文件，分别为user\_info和weibo\_info
+
+关于爬取时间间隔
+----------------------
+微博爬取中，如果爬取过快，会导致
 
 注意
 ----------------------
