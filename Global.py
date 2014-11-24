@@ -7,6 +7,15 @@
 #
 # Global variables 
 
+import sys
+reload(sys)
+# if(sys.platform == 'win32'):
+#     encoding = "gb2312"
+# else:
+#     encoding = "utf8"
+    
+sys.setdefaultencoding("utf8")
+
 import random
 import ConfigParser
 
@@ -23,7 +32,7 @@ def load_user_agent():
     line  = fp.readline().strip()
     while(line):
         user_agents.append(line)
-        line = fp.readline()
+        line = fp.readline().strip()
     fp.close()
     return user_agents
 
@@ -38,33 +47,24 @@ class UserAgents:
         user_agent = UserAgents.user_agents[index].strip()
         return user_agent
 
-
-class LoginInfo:
-
-    username = config.get('login', 'username')
-    passwd = config.get('login', 'pswd')
-
+class DBInfo:
+    
+    host = config.get('Database', 'host')
+    db = config.get('Database', 'db')
+    user = config.get('Database', 'user')
+    passwd = config.get('Database', 'passwd')
+    port = config.getint('Database', 'port')
+    enable = config.getboolean('Database', 'enable')
+    
     @staticmethod
     def printIt(prefix = ''):
-        print 'Login Info:'
-        print prefix, 'user:', LoginInfo.username
-        print prefix, 'passwd:', LoginInfo.passwd
-
-class CrawlerInfo:
-
-    ids_path = config.get('crawl', 'idsDir')
-    out_path = config.get('crawl', 'outPath')
-    threads_num = config.getint('run', 'threadsNum')
-    is_proxy = config.get('run', 'isProxy')
-
-    @staticmethod
-    def printIt(prefix = ''):
-        print 'cralwer info:'
-        print prefix, 'ids_path:', CrawlerInfo.ids_path
-        print prefix, 'out_path:', CrawlerInfo.out_path
-        print prefix, 'threads_num:', CrawlerInfo.threads_num
-        print prefix, 'is_proxy:', CrawlerInfo.is_proxy
-
+        print 'Database Info:'
+        print prefix, 'host:', DBInfo.host
+        print prefix, 'db:', DBInfo.db
+        print prefix, 'user:', DBInfo.user
+        print prefix, 'passwd:', DBInfo.passwd
+        print prefix, 'port:', DBInfo.port
+        print prefix, 'enable', DBInfo.enable
 
 def test():
     LoginInfo.printIt('\t')
